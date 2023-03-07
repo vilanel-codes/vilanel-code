@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool tomaketrip(vector<int>& time, int totalTrips, long long giventime){
+        long long actualtrip=0;
+        for(auto i :time){
+            actualtrip +=  giventime/(long long)i;
+        }
+        return actualtrip>=totalTrips;
+    }
+    long long minimumTime(vector<int>& time, int totalTrips) {
+        long long left =1, right = 1LL * *max_element(time.begin(),time.end())*totalTrips;
+        long long mid;
+        while(left<right){
+            mid = left +(right-left)/2;
+            if(tomaketrip(time,totalTrips,mid)){
+                right=mid;
+            }
+            else {
+                left = mid+1;
+            }
+        }
+        return left;
+
+    }
+};

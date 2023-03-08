@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& a, vector<int>& b) {
+        vector<int> ans(2);
+        set<int> s;
+        long long s1=0,s2=0;
+        for(auto i : a) s1+=i;
+        for(auto i : b){
+            s2+=i;
+            s.insert(i);
+        }
+        for(auto i : a){
+            if(s.find((s2-s1)/2 + i)!=s.end()){
+                ans[0]=i;
+                ans[1]=(s2-s1)/2 + i;
+                return ans;
+            }
+        }
+        return ans;
+    }
+};

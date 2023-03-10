@@ -1,0 +1,25 @@
+class Solution {
+public:
+    ListNode* ptr;
+    int size =0;
+    Solution(ListNode* head) {
+        ptr = head;
+        while(head){
+            size++;
+            head=head->next;
+        }
+        
+    }
+    
+    int getRandom() {
+        int point = rand()%size;
+        ListNode* curr = ptr;
+        int cnt =0;
+        while(cnt<point){
+            cnt++;
+            curr = curr->next;
+        }
+        return curr->val;
+        
+    }
+};
